@@ -16,4 +16,6 @@ peanut butter and jelly
 salted caramel
 pecan pie
 */
+require 'LIB_project1.php';
+getItem(1);
  ?>

@@ -13,10 +13,10 @@ class DB{
       die();
     }
   }//contructor
-  function getPeopleParam($id){
+  function getItemByID($id){
     try{
       $data = array();
-      $stmt = $this->dbh->prepare("select * from people where PersonID = :id");
+      $stmt = $this->dbh->prepare("select * from item where itemID = :id");
       $stmt->bindParam(":id",$id,PDO::PARAM_INT);
       $stmt->execute();
       $data = $stmt->fetchAll();
@@ -26,20 +26,32 @@ class DB{
       die();
     }
   }
-
-  function insert($last, $first, $nick){
+  function getAllProducts(){
     try{
-      $stmt = $this->dbh->prepare("insert into people (LastName,FirstName,NickName) values (:lastName, :firstName, :nickName)");
-      $stmt->execute(array("lastName"=
-      >$last,
-                           "firstName"=>$first,
-                           "nickName"=>$nick));
-      return $this->dbh->lastInsertId();
+      $data = array();
+      $stmt = $this->dbh->prepare("select * from item");
+      $stmt->execute();
+      $data = $stmt->fetchAll();
+      return $data;
     }catch(PDOException $e){
       echo $e->getMessage();
       die();
     }
   }
+
+  // function insert($last, $first, $nick){
+  //   try{
+  //     $stmt = $this->dbh->prepare("insert into item (LastName,FirstName,NickName) values (:lastName, :firstName, :nickName)");
+  //     $stmt->execute(array("lastName"=
+  //     >$last,
+  //                          "firstName"=>$first,
+  //                          "nickName"=>$nick));
+  //     return $this->dbh->lastInsertId();
+  //   }catch(PDOException $e){
+  //     echo $e->getMessage();
+  //     die();
+  //   }
+  // }
   function getAllObjects(){
     try{
       include "Person.class.php";
