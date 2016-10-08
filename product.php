@@ -21,14 +21,11 @@ $db = new DB;
 <body>
 <?php
 include 'nav.php';
+// echo $_GET['itemID'];
+$item = getItem($db, $_GET['itemID']);
+foreach($item as $i){
+  echo $i->listItem();
+}
  ?>
-<div class='item_container'>
-  <?php
-  $items = getAllItems($db);
-  foreach($items as $item){
-    echo $item->listItems();
-  }
-   ?>
-</div>
 </body>
 </html>

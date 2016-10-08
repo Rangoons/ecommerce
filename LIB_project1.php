@@ -1,18 +1,11 @@
 <?php
-require 'DB.class.php';
+//require 'DB.class.php';
 //$db = new DB;
-function getItem($id){
-  $db = new DB;
-  $item = $db->getItemByID($id);
-  $itemArray
+function getItem($db,$id){
+  return $db->getItemByID($id);
 }
-function getAllItems(){
-  $db = new DB;
-  $items = $db->getAllProducts();
-  $itemsArray = array();
-  foreach($items as $item){
-    
-  }
+function getAllItems($db){
+  return $db->getAllObjects();
 }
 //getItem(1);
  ?>
