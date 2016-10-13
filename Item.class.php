@@ -29,11 +29,18 @@ class Item{
         <img class='product_img' src='{$this->image}'>
         <p>{$this->desc}</p>
         <h1>$ {$this->price}</h1>
-
+        <button type='button' class='add btn btn-default navbar-btn' value='{$this->itemID}'>Add to Cart</button>
       </div>
       </a>
       ";
     return $text;
   }
+  public function listCart(){
+    $text ="
+    <p class='navbar-text'>{$this->name} | $ {$this->price} <button type='button' class=' remove btn btn-default navbar-btn' value='{$this->itemID}'>Remove</button></p>
+    ";
+      return $text;
+  }
+
 }
  ?>
